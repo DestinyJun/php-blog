@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>操作提示</title>
+  <!-- css -->
+  <link rel="stylesheet" href="./Public/Admin/Css/bootstrap.min.css">
+  <link rel="stylesheet" href="./Public/Admin/Css/font-awesome.min.css">
+  <link rel="stylesheet" href="./Public/Admin/Css/fonts.googleapis.com.css">
+  <link rel="stylesheet" href="./Public/Admin/Css/ace.min.css">
+  <style>
+    .content{
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+    .box{
+      height: 200px;
+      width: 500px;
+      background-color: #FFFDCE;
+      display: inline-block;
+      margin-top: 10%;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="content">
+  <div class="box">
+    <p class="h2 text-center">操作提示</p>
+    <p style=" text-align: left;"><span class="h4">提示：</span>{{$message}}</p>
+    <p id="timer" style=" text-align: left;"></p>
+  </div>
+</div>
+</body>
+<script src="./Public/Admin/Js/jquery-2.1.4.min.js"></script>
+<script>
+  var time = {{$time}};
+  var str = `系统将在<span class="text-danger h3">${time}</span>分钟后自动跳转，如果不想等待，请点击<a href="#" class="text-primary">这里</a>跳转。`;
+  $('#timer').html(str);
+  var setTimer = setInterval(() => {
+    time--;
+    var str = `系统将在<span class="text-danger h3">${time}</span>分钟后自动跳转，如果不想等待，请点击<a href="#" class="text-primary">这里</a>跳转。`;
+    $('#timer').html(str);
+    if (time === 0) {
+      clearInterval(setTimer);
+    }
+  },1000)
+</script>
+</html>

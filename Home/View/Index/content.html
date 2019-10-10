@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>{{$articleContent.title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content=" HTML5 Template">
+  <meta name="author" content="suitstheme.com">
+  {{include file='Home/View/Public/css.html'}}
+</head>
+<body class="body-container">
+<!-- header -->
+{{include file='Home/View/Public/header.html'}}
+<!-- page content -->
+<section class="page">
+  <div class="container">
+    <div class="row">
+      <div class="blog-wrapper span8">
+        <div class="post gallery-post">
+          <div class="post-content">
+            <h3>
+              {{$articleContent.title}}
+              <small style="color: #B0B0B0;">（{{$articleContent.addate|date_format:'%Y-%m-%d %H:%M:%S'}}）</small>
+            </h3>
+            <div class="content">
+              {{$articleContent.content}}
+            </div>
+          </div>
+          <div class="meta">
+            <div class="shared">
+              <div class="bshare-custom icon-medium">
+                <a title="分享到QQ空间" class="bshare-qzone"></a>
+                <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                <a title="分享到人人网" class="bshare-renren"></a>
+                <a title="分享到腾讯微博" class="bshare-qqmb"></a>
+                <a title="分享到网易微博" class="bshare-neteasemb"></a>
+                <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                <span class="BSHARE_COUNT bshare-share-count">0</span>
+              </div>
+              <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+              <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+            </div>
+            <div class="operate">
+              <span>
+                <a href="#">作者：{{$articleContent.nikename}}</a>
+                <span class="dash">/</span>
+                <a href="#">分类：{{$articleContent.classname}}</a>
+                <span class="dash">/</span>
+                <a href="#">阅读：{{$articleContent.read}}</a>
+                <span class="dash">/</span>
+                <a href="?c=Index&a=praise&id={{$articleContent.id}}">点赞：{{$articleContent.praise}}</a>
+                <span class="dash">/</span>
+                <a href="#">评论：{{$articleContent.comment_count}}</a>
+              </span>
+            </div>
+            <div class="next" style="height: 50px">
+              <div class="navigaiton">
+                {{if !empty($articlePrev)}}
+                <a href="?c=Index&a=content&id={{$articlePrev.id}}" class="prev">上一篇</a>
+                {{else}}
+                已经是第一篇了！
+                {{/if}}
+                {{if !empty($articleNext)}}
+                <a href="?c=Index&a=content&id={{$articleNext.id}}" class="next">下一篇</a>
+                {{else}}
+                已经是最后篇了！
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{include file='Home/View/Public/sidebar.html'}}
+    </div>
+  </div>
+</section>
+</body>
+{{include file='Home/View/Public/js.html'}}
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>用户添加</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  {{include file="Admin/View/Public/csslist.html"}}
+</head>
+<body class="no-skin">
+{{include file="Admin/View/Public/header.html"}}
+<div class="main-container ace-save-state" id="main-container">
+  <!--侧边导航栏-->
+  {{include file="Admin/View/Public/sidebar.html"}}
+  <div class="main-content">
+    <div class="main-content-inner">
+      <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+          <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="?c=User&a=Index">用户管理</a>
+          </li>
+          <li class="active">用户添加</li>
+        </ul>
+        <div class="nav-search" id="nav-search">
+          <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+          </form>
+        </div>
+      </div>
+      <div class="page-content">
+        <div class="row">
+          <div class="col-xs-12">
+            <form class="form-horizontal" role="form" action="?c=User&a=insert" method="post">
+              <!--用户名-->
+              <div class="form-group">
+                <label for="username" class="col-xs-12 col-sm-3 control-label no-padding-right">用户名称</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <input type="text" id="username" class="width-100" name="username">
+                    <!--<i class="ace-icon fa fa-leaf"></i>-->
+                  </span>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <span class="text-danger">*</span>
+                  长度为5-15位（字母、数字），不能含有特殊符号
+                </div>
+              </div>
+              <!--密码-->
+              <div class="form-group">
+                <label for="password" class="col-xs-12 col-sm-3 control-label no-padding-right">用户密码</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <input type="text" id="password" class="width-100" name="password">
+                    <!--<i class="ace-icon fa fa-leaf"></i>-->
+                  </span>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <span class="text-danger">*</span>
+                  长度为5-15位（字母、数字），不能含有特殊符号
+                </div>
+              </div>
+              <!--确认密码-->
+              <div class="form-group">
+                <label for="surepass" class="col-xs-12 col-sm-3 control-label no-padding-right">确认密码</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <input type="text" id="surepass" class="width-100" name="surepass">
+                    <!--<i class="ace-icon fa fa-leaf"></i>-->
+                  </span>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <span class="text-danger">*</span>
+                  两次输入的密码必须一致
+                </div>
+              </div>
+              <!--昵称-->
+              <div class="form-group">
+                <label for="nikename" class="col-xs-12 col-sm-3 control-label no-padding-right">输入昵称</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <input type="text" id="nikename" class="width-100" name="nikename">
+                    <!--<i class="ace-icon fa fa-leaf"></i>-->
+                  </span>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <span class="text-danger">*</span>
+                  请输入昵称
+                </div>
+              </div>
+              <!--联系方式-->
+              <div class="form-group">
+                <label for="tel" class="col-xs-12 col-sm-3 control-label no-padding-right">联系方式</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <input type="text" id="tel" class="width-100" name="tel">
+                    <!--<i class="ace-icon fa fa-leaf"></i>-->
+                  </span>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <span class="text-danger">*</span>
+                  例如：13888888888 或 0851-88888888
+                </div>
+              </div>
+              <!--帐号状态-->
+              <div class="form-group">
+                <span class="col-xs-12 col-sm-3 control-label no-padding-right">帐号状态</span>
+                <div class="col-xs-12 col-sm-5">
+                  <label>
+                    <input name="status" type="radio" class="ace" value="1" checked>
+                    <span class="lbl">正常</span>
+                  </label>
+                  <label>
+                    <input name="status" type="radio" class="ace" value="0">
+                    <span class="lbl">停用</span>
+                  </label>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <!--<span class="text-danger">*</span>-->
+                  <!--例如：13888888888 或 0851-88888888-->
+                </div>
+              </div>
+              <!--角色-->
+              <div class="form-group">
+                <label for="role" class="col-xs-12 col-sm-3 control-label no-padding-right">角色</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <select class="chosen-select form-control" id="role" data-placeholder="Choose a State..." name="role">
+                      <option value="1">超级管理员</option>
+                      <option value="0">普通管理员</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <!--<span class="text-danger">*</span>-->
+                  <!--例如：13888888888 或 0851-88888888-->
+                </div>
+              </div>
+              <!--提交-->
+              <div class="form-group text-center">
+                <button class="btn btn-info" type="submit">提交</button>
+                <a class="btn btn-warning" href="?c=User&a=index">返回</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+{{include file="Admin/View/Public/jslist.html"}}
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>文君博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content=" HTML5 Template">
+  <meta name="author" content="suitstheme.com">
+  {{include file='Home/View/Public/css.html'}}
+</head>
+<body class="body-container">
+<!--header-->
+{{include file='Home/View/Public/header.html'}}
+<!--content -->
+<section class="page">
+  <div class="container">
+    <div class="row">
+      <div class="blog-wrapper span8">
+        {{foreach $articleList as $item}}
+        <div class="post gallery-post">
+          <div class="post-content">
+            <p>{{$item.title}}</p>
+            <div class="content" style="height: 300px;overflow: hidden">
+              {{$item.content}}
+            </div>
+            <a href="?c=Index&a=content&id={{$item.id}}" class="mocha-button" style="float: right;">查看全文>></a>
+          </div>
+          <div class="meta">
+            <p class="text-left">
+              <span>
+                <a href="#">作者：{{$item.nikename}}</a>
+                <span class="dash">/</span>
+                <a href="#">分类：{{$item.classname}}</a>
+                <span class="dash">/</span>
+                <a href="#">阅读：{{$item.read}}</a>
+                <span class="dash">/</span>
+                <a href="#comments">点赞：{{$item.praise}}</a>
+                   <span class="dash">/</span>
+                <a href="#comments">评论：{{$item.comment_count}}</a>
+              </span>
+            </p>
+          </div>
+        </div>
+        {{/foreach}}
+        <div class="pagination">
+          <!--<div class="links">
+            <ul>
+              <li><a class="active" href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+            </ul>
+          </div>
+          <div class="navigaiton">
+            <a href="#" class="prev">
+              <img src="./Public/Home/Images/slider-prev.png">
+            </a>
+            <a href="#" class="next">
+              <img src="./Public/Home/Images/slider-next.png">
+            </a>
+          </div>-->
+          {{$page_list}}
+        </div>
+      </div>
+      {{include file='Home/View/Public/sidebar.html'}}
+    </div>
+  </div>
+</section>
+</body>
+{{include file='Home/View/Public/js.html'}}
+</html>

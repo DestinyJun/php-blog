@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>博客列表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content=" HTML5 Template">
+  <meta name="author" content="suitstheme.com">
+  {{include file='Home/View/Public/css.html'}}
+</head>
+<body class="body-container">
+<!--header-->
+{{include file='Home/View/Public/header.html'}}
+<!-- page content -->
+<section class="page">
+  <div class="container">
+    <div class="row">
+      <div class="blog-wrapper span8">
+        <div class="widget">
+          <h3 style="font-weight: bolder;margin-bottom: 15px">博文目录</h3>
+          <div class="widget-content">
+            {{foreach $articleList as $item}}
+            <div class="recent-post-tab">
+              <span style="float: right">
+                （{{$item.comment_count}}/{{$item.read}}）
+                <small style="color: #ADADB3;">{{$item.addate|date_format:'%Y-%m-%d %H:%M:%S'}}</small>
+              </span>
+              <a href="?c=Index&a=content&id={{$item.id}}" style="clear: unset">{{$item.title}}</a>
+            </div>
+            {{/foreach}}
+          </div>
+          <!-- end widget content -->
+        </div>
+        <div class="pagination">
+          {{$page_list}}
+        </div>
+      </div>
+      {{include file='Home/View/Public/sidebar.html'}}
+    </div>
+  </div>
+</section>
+</body>
+{{include file='Home/View/Public/js.html'}}
+</html>

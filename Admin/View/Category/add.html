@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>用户添加</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  {{include file="Admin/View/Public/csslist.html"}}
+</head>
+<body class="no-skin">
+{{include file="Admin/View/Public/header.html"}}
+<div class="main-container ace-save-state" id="main-container">
+  <!--侧边导航栏-->
+  {{include file="Admin/View/Public/sidebar.html"}}
+  <div class="main-content">
+    <div class="main-content-inner">
+      <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+          <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="?c=User&a=Index">用户管理</a>
+          </li>
+          <li class="active">用户添加</li>
+        </ul>
+        <div class="nav-search" id="nav-search">
+          <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+          </form>
+        </div>
+      </div>
+      <div class="page-content">
+        <div class="row">
+          <div class="col-xs-12">
+            <form class="form-horizontal" role="form" action="?c=Category&a=insert" method="post">
+              <!--分类名称-->
+              <div class="form-group">
+                <label for="classname" class="col-xs-12 col-sm-3 control-label no-padding-right">分类名称</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <input type="text" id="classname" class="width-100" name="classname">
+                    <i class="ace-icon fa fa-leaf"></i>
+                  </span>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <span class="text-danger">*</span>
+                  长度为5-15位（字母、数字），不能含有特殊符号
+                </div>
+              </div>
+              <!--排序-->
+              <div class="form-group">
+                <label for="orderby" class="col-xs-12 col-sm-3 control-label no-padding-right">排序</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <input type="text" id="orderby" class="width-100" name="orderby">
+                    <i class="ace-icon fa fa-leaf"></i>
+                  </span>
+                </div>
+                <div class="help-block col-xs-12 col-sm-reset inline">
+                  <span class="text-danger">*</span>
+                  长度为5-15位（字母、数字），不能含有特殊符号
+                </div>
+              </div>
+              <!--父分类-->
+              <div class="form-group">
+                <label for="pid" class="col-xs-12 col-sm-3 control-label no-padding-right">父分类</label>
+                <div class="col-xs-12 col-sm-5">
+                  <span class="block input-icon input-icon-right">
+                    <select class="chosen-select form-control" id="pid" name="pid" style="cursor: pointer">
+                      <option value="" selected>无</option>
+                      {{foreach $category_list as $item}}
+                        <option value="{{$item.id}}">
+                          {{str_repeat('--------',$item.level)}}
+                          {{$item['classname']}}
+                        </option>
+                      {{/foreach}}
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <!--提交-->
+              <div class="form-group text-center">
+                <button class="btn btn-info" type="submit">提交</button>
+                <a class="btn btn-warning" href="?c=User&a=index">返回</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+{{include file="Admin/View/Public/jslist.html"}}
+</html>

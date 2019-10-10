@@ -1,0 +1,86 @@
+<div id="sidebar" class="sidebar span4">
+  <div class="widgets-wrapper">
+    <!--文章查询-->
+    <div class="widget">
+      <div class="widget-content">
+        <form action="?c=Index&a=Index" method="post">
+          <div class="form-group">
+            <div class="col-xs-12">
+              <input id="keyword" type="text" placeholder="请输入标题" name="keyword" style="vertical-align: top">
+              <button class="btn btn-danger" type="submit" style="vertical-align: top">搜索</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--文章分类-->
+    <div class="widget">
+      <h4>文章分类</h4>
+      <!-- widget content -->
+      <div class="widget-content">
+        <ul>
+          {{foreach $categorys as $item}}
+          <li>
+            <a href="?c=Index&a=Index&category_id={{$item.id}}">
+              {{str_repeat('--------',$item.level)}}
+              {{$item.classname}}
+              <span style="color: red;font-weight: bolder">（{{$item.records}}）</span>
+            </a>
+          </li>
+          {{/foreach}}
+        </ul>
+      </div>
+      <!-- end widget content -->
+    </div>
+    <!--最新评论-->
+    <div class="widget">
+      <h4>最新评论</h4>
+      <div class="widget-content">
+        <div class="recent-post-tab">
+          <span>13 August 2013</span>
+          <a href="single.html">Everything You Can Do Right Now</a>
+        </div>
+        <div class="recent-post-tab">
+          <span>5 August 2013</span>
+          <a href="single.html">Audio Post with a Nice Featured Image</a>
+        </div>
+        <div class="recent-post-tab">
+
+          <span>26 July 2013</span>
+          <a href="single.html">Post with a Featured Video</a>
+
+
+        </div>
+        <!-- end post -->
+
+      </div>
+      <!-- end widget content -->
+    </div>
+    <!--按照月份归档文章-->
+    <div class="widget">
+      <h4>文章归档</h4>
+      <div class="widget-content">
+        {{foreach $articleMonth as $item}}
+        <div class="recent-post-tab">
+          <a href="" target="_blank">
+            {{$item.months}}
+            <b style="color:red;">（{{$item.records}}）</b>
+          </a>
+        </div>
+        {{/foreach}}
+      </div>
+    </div>
+    <!--友情连接-->
+    <div class="widget">
+      <h4>友情连接</h4>
+      <div class="widget-content">
+        {{foreach $links as $item}}
+        <div class="recent-post-tab">
+          <a href="{{$item.url}}" target="_blank">{{$item.domain}}</a>
+        </div>
+        {{/foreach}}
+      </div>
+
+    </div>
+  </div>
+</div>

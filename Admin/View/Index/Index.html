@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  {{include file="Admin/View/Public/csslist.html"}}
+</head>
+<body class="no-skin">
+{{include file="Admin/View/Public/header.html"}}
+<div class="main-container ace-save-state" id="main-container">
+  <!--侧边导航栏-->
+  {{include file="Admin/View/Public/sidebar.html"}}
+  <div class="main-content">
+    <div class="main-content-inner">
+      <!--内容导航-->
+      <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+          <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+          </li>
+          <li class="active">Dashboard</li>
+        </ul>
+        <div class="nav-search" id="nav-search">
+          <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+          </form>
+        </div>
+      </div>
+      <!--主体内容-->
+      <div class="page-content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="info">
+              <div class="row">
+                <div class="col-xs-6">
+                  <p>
+                    用户名：<span class="text-info">{{$smarty.session.username}}</span>
+                  </p>
+                  <p>
+                    身份过期时间（其实就是session的过期时间）：<span class="text-info">{{ini_get("session.gc_maxlifetime")}}秒</span>
+                  </p>
+                  <p>
+                    服务器域名：<span class="text-info">{{$smarty.server.SERVER_NAME}}</span>
+                  </p>
+                </div>
+                <div class="col-xs-6">
+                  <p>
+                    IP地址：<span class="text-info">{{$smarty.server.REMOTE_ADDR}}</span>
+                  </p>
+                  <p>
+                    登陆时间：<span class="text-info">{{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}}</span>
+                  </p>
+                  <p>
+                    PHP环境：<span class="text-info">{{$smarty.server.SERVER_SOFTWARE}}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+{{include file="Admin/View/Public/jslist.html"}}
+</html>

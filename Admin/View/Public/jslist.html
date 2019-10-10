@@ -1,0 +1,13 @@
+<!-- basic scripts -->
+<script src="./Public/Admin/Js/jquery-2.1.4.min.js"></script>
+<script src="./Public/Admin/Js/bootstrap.min.js"></script>
+<script src="./Public/Admin/Js/ace.min.js"></script>
+<script>
+  $("#navList > li").removeClass('active');
+  var controller = location.href.split('?')[1].split('&')[0].split('=')[1];
+  for (let i =0;i<$("#navList > li").length;i++) {
+    if ($($("#navList > li")[i]).data().c === controller) {
+      $($("#navList > li")[i]).addClass('active')
+    }
+  }
+</script>
