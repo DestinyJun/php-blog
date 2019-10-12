@@ -17,16 +17,6 @@ namespace Admin\Controller {
       $this->smarty->display('User/Index.html');
     }
 
-    public function delete()
-    {
-      $this->auth();
-      $id = $_GET['id'];
-      $modelObj = UserModel::getInstance();
-      if ($modelObj->fetchDelete($id)) {
-        $this->jump('删除成功', '?c=User&a=Index');
-      }
-    }
-
     public function add()
     {
       $this->auth();
@@ -59,6 +49,37 @@ namespace Admin\Controller {
         $this->jump("注册失败！", '?c=User&a=add');
         die();
       }
+    }
+
+    public function delete()
+    {
+      $this->auth();
+      $id = $_GET['id'];
+      $modelObj = UserModel::getInstance();
+      if ($modelObj->fetchDelete($id)) {
+        $this->jump('删除成功', '?c=User&a=Index');
+      }
+    }
+
+    public function edit()
+    {
+      $id = $_REQUEST['id'];
+      $userModel = UserModel::getInstance();
+      $this->smarty->assign('userInfo',$userModel->fetchOne("id = {$id}"));
+      $this->smarty->display('User/edit.html');
+    }
+
+    public function update()
+    {
+      $userModel = UserModel::getInstance();
+      $id = $_REQUEST['id'];
+      $arr['username'] = $_REQUEST['username'];
+      $arr['nikename'] = $_REQUEST['nikename'];
+      $arr['tel'] = $_REQUEST['tel'];
+      $arr['status'] = $_REQUEST['status'];
+      $arr['role'] = $_REQUEST['role'];
+      $userModel->fetchUpdate($arr,$id);
+      $this->jump("修改成功",'?c=User&a=Index');
     }
 
     public function login()
